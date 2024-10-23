@@ -1,17 +1,27 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+import {useCounterStore} from './stores/counter'
+
+const counterStore = useCounterStore();
+
+const increase = () =>{
+  counterStore.increment();
+}
 </script>
 
 <template>
   <header>
     <div class="wrapper">
-      <HelloWorld msg="You did it?!?!!" />
+      <HelloWorld msg="!!!!!!You did it?!?!!" />
+      aaaaaa - {{counterStore.count}}
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
       </nav>
+
+      <button @click="increase">Increase</button>
     </div>
   </header>
 
@@ -24,10 +34,7 @@ header {
   max-height: 100vh;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
+
 
 nav {
   width: 100%;
